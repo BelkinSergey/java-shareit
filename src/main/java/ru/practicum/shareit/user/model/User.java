@@ -14,10 +14,7 @@ import jakarta.validation.constraints.NotNull;
 public class User {
     private Long id;
 
-    @NotBlank(message = "Имя пользователя не указано.")
     private String name;
 
-    @NotNull(message = "Почтовый адрес пустой.")
-    @Email(message = "Почтовый адрес не соответствует требованиям")
     private String email;
 }

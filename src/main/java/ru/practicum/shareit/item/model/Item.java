@@ -11,10 +11,9 @@ import ru.practicum.shareit.user.model.User;
 public class Item {
     private Long id;
 
-    @NotBlank(message = "Наименование вещи отсутствует.")
+
     private String name;
 
-    @NotBlank(message = "Описание вещи пустое.")
     private String description;
 
     private Boolean available;

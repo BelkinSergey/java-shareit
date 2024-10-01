@@ -36,8 +36,7 @@ public class ItemDaoInMemoryImpl implements ItemDao {
 
     @Override
     public Item updateItem(Item item, long itemId, long userId) {
-        checkItemAvailability(itemId);
-        checkAccess(userId, itemId);
+
 
         Item oldItem = items.get(itemId);
         if (item.getName() == null) {
@@ -60,7 +59,7 @@ public class ItemDaoInMemoryImpl implements ItemDao {
 
     @Override
     public Item findItemById(long itemId) {
-        checkItemAvailability(itemId);
+
         log.info("Найдена вещь с айди {}", itemId);
         return items.get(itemId);
     }
@@ -81,29 +80,14 @@ public class ItemDaoInMemoryImpl implements ItemDao {
                 .filter(item -> item.getName().toLowerCase().contains(text.toLowerCase()) ||
                         item.getDescription().toLowerCase().contains(text.toLowerCase()))
                 .toList();
-
         log.info("Найден список вещей по текстовому запросу {}", text);
         return matchItems;
     }
 
     @Override
     public void removeItemById(long userId, long itemId) {
-        checkAccess(userId, itemId);
+
         items.remove(itemId);
         log.info("Удален пользователь с айди {}", userId);
-    }
-
-    private void checkItemAvailability(long itemId) {
-        if (!items.containsKey(itemId)) {
-            throw new NotFoundException("Вещь с указанным айди не найдена.");
-        }
-    }
-
-    private void checkAccess(long userId, long itemId) {
-        Item item = items.get(itemId);
-        Long ownerId = item.getOwner().getId();
-        if (!Objects.equals(userId, ownerId)) {
-            throw new NotFoundException("Редактирование вещи доступно только владельцу.");
-        }
     }
 }
