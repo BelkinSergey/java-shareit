@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres
+    container_name: shareit-db
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_DB: shareit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      TZ: Europe/Moscow
