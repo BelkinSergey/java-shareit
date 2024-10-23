@@ -23,7 +23,7 @@ public class ItemDtoByOwner {
 
     private BookingDto nextBooking;
 
-    private List<CommentDto> comments;
+    private List<CommentInfoDto> comments;
 }
 
 

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.validation.constraints.NotBlank;
+import ru.practicum.shareit.group.Marker;
 
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Getter
@@ -14,12 +14,6 @@ import java.time.LocalDateTime;
 public class CommentDto {
     private Long id;
 
-    @NotBlank(message = "Текст комментария отсутствует.")
+    @NotBlank(message = "Текст комментария отсутствует.", groups = {Marker.OnCreate.class, Marker.OnUpdate.class})
     private String text;
-
-    private String authorName;
-
-    private Long itemId;
-
-    private LocalDateTime created;
 }

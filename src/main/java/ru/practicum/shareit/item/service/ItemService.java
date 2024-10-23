@@ -4,6 +4,7 @@ import ru.practicum.shareit.exception.NotAccessException;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.item.dao.ItemDao;
 import ru.practicum.shareit.item.dto.CommentDto;
+import ru.practicum.shareit.item.dto.CommentInfoDto;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.dto.ItemDtoByOwner;
 import ru.practicum.shareit.item.model.Item;
@@ -24,7 +25,7 @@ public interface ItemService {
 
     void removeItemById(long userId, long itemId);
 
-    CommentDto addComment(CommentDto commentDto, long userId, long itemId);
+    CommentInfoDto addComment(CommentDto commentDto, long userId, long itemId);
 
     static void checkItemAvailability(ItemDao itemDao, long itemId) {
         if (!itemDao.existsById(itemId)) {

@@ -24,7 +24,7 @@ public class ControllerExceptionHandler {
                     String errorMessage = error.getDefaultMessage();
                     errors.put(fieldName, errorMessage);
 
-                    log.error(errorMessage + " " + fieldError.getRejectedValue(), fieldName);
+                    log.info(errorMessage + " " + fieldError.getRejectedValue(), fieldName);
                 });
         return ResponseEntity.badRequest().body(errors);
     }
@@ -34,7 +34,7 @@ public class ControllerExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         errors.put("Объект не найден", e.getMessage());
 
-        log.error(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
+        log.info(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
 
         return ResponseEntity.status(404).body(errors);
     }
@@ -44,7 +44,7 @@ public class ControllerExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         errors.put("Некорректное значение", e.getMessage());
 
-        log.error(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
+        log.info(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
 
         return ResponseEntity.status(400).body(errors);
     }
@@ -54,7 +54,7 @@ public class ControllerExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         errors.put("Похожий объект уже существует", e.getMessage());
 
-        log.error(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
+        log.info(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
 
         return ResponseEntity.status(409).body(errors);
     }
@@ -64,7 +64,7 @@ public class ControllerExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         errors.put("Объект не доступен для редактирования", e.getMessage());
 
-        log.error(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
+        log.info(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
 
         return ResponseEntity.status(404).body(errors);
     }
@@ -74,7 +74,7 @@ public class ControllerExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         errors.put("error", e.getMessage());
 
-        log.error(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
+        log.info(e.getStackTrace()[0].getMethodName() + ": " + e.getMessage());
 
         return ResponseEntity.status(500).body(errors);
     }

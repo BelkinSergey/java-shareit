@@ -11,6 +11,7 @@ import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.NotValidParameterException;
 import ru.practicum.shareit.item.dao.CommentDao;
 import ru.practicum.shareit.item.dto.CommentDto;
+import ru.practicum.shareit.item.dto.CommentInfoDto;
 import ru.practicum.shareit.item.dto.ItemDtoByOwner;
 import ru.practicum.shareit.item.mapper.CommentMapper;
 import ru.practicum.shareit.item.mapper.ItemMapper;
@@ -101,6 +102,7 @@ public class ItemServiceImpl implements ItemService {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     @Transactional(readOnly = true)
     public List<ItemDto> findItemByDescription(String text) {
@@ -121,7 +123,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public CommentDto addComment(CommentDto commentDto, long userId, long itemId) {
+    public CommentInfoDto addComment(CommentDto commentDto, long userId, long itemId) {
         User user = userDao.findById(userId).orElseThrow(() -> new NotFoundException("Нет такого пользователя по id: " + userId));
         Item item = dao.findById(itemId).orElseThrow(() -> new NotFoundException("Нет такого предмета по id: " + itemId));
 
@@ -134,7 +136,7 @@ public class ItemServiceImpl implements ItemService {
         commentDao.save(comment);
 
         log.info("Пользователь с id {} оставил комментарий к вещи с id {}.", userId, itemId);
-        return CommentMapper.toCommentDto(comment);
+        return CommentMapper.toCommentInfoDto(comment);
     }
 
     private void checkAccess(long userId, long itemId) {
