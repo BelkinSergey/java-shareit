@@ -48,7 +48,7 @@ public class BookingServiceImpl implements BookingService {
         if (userId.equals(item.getOwner().getId())) {
             throw new NotFoundException("Владелец вещи не может её забронировать.");
         }
-        dto.setStatus(BookingStatus.WAITING);
+        //   dto.setStatus(BookingStatus.WAITING);
         Booking booking = BookingMapper.toBooking(dto, item, userDao.getReferenceById(userId));
         return BookingMapper.doBookingOutputDto(bookingDao.save(booking));
     }

@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.practicum.shareit.booking.BookingStatus;
 import ru.practicum.shareit.group.Marker;
 
 import java.time.LocalDateTime;
@@ -30,7 +29,5 @@ public class BookingDto {
             groups = {Marker.OnCreate.class})
     private LocalDateTime end;
 
-    private Long bookerId;
 
-    private BookingStatus status;
 }

@@ -2,6 +2,7 @@ package ru.practicum.shareit.booking.mapper;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import ru.practicum.shareit.booking.BookingStatus;
 import ru.practicum.shareit.booking.dto.BookingDto;
 import ru.practicum.shareit.booking.dto.BookingOutputDto;
 import ru.practicum.shareit.booking.model.Booking;
@@ -25,7 +26,7 @@ public class BookingMapper {
                 dto.getStart(),
                 dto.getEnd(),
                 booker,
-                dto.getStatus()
+                BookingStatus.WAITING
         );
     }
 
@@ -34,9 +35,8 @@ public class BookingMapper {
                 booking.getId(),
                 booking.getItem().getId(),
                 booking.getStart(),
-                booking.getEnd(),
-                booking.getBooker().getId(),
-                booking.getStatus()
+                booking.getEnd()
+
         );
     }
 

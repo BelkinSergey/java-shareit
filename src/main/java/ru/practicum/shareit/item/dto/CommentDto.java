@@ -14,6 +14,6 @@ import ru.practicum.shareit.group.Marker;
 public class CommentDto {
     private Long id;
 
-    @NotBlank(message = "Текст комментария отсутствует.", groups = {Marker.OnCreate.class, Marker.OnUpdate.class})
+    @NotBlank(message = "Текст комментария отсутствует.", groups = {Marker.OnCreate.class})
     private String text;
 }

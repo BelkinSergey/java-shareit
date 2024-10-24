@@ -18,4 +18,6 @@ public interface ItemDao extends JpaRepository<Item, Long> {
                 OR LOWER(i.description) LIKE LOWER(CONCAT('%', ?2, '%')))
             """)
     List<Item> findByAvailableTrueAndDescriptionContainingIgnoreCaseOrNameContainingIgnoreCase(String text, String texts);
+
+    List<Item> findAllByOwnerId(Long userId);
 }

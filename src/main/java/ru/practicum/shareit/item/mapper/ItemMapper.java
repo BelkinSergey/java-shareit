@@ -11,7 +11,6 @@ import ru.practicum.shareit.item.model.Comment;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.model.User;
 
-import java.util.Comparator;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -35,14 +34,10 @@ public class ItemMapper {
         return item;
     }
 
-    public static ItemDtoByOwner doItemDtoByOwner(Item item, List<Booking> lastBookings, List<Booking> nextBookings,
+    public static ItemDtoByOwner doItemDtoByOwner(Item item, Booking lastBooking, Booking nextBooking,
                                                   List<Comment> comments) {
         List<CommentInfoDto> commentInfoDto = comments.stream().map(CommentMapper::toCommentInfoDto).toList();
 
-        Booking nextBooking = nextBookings.stream()
-                .min(Comparator.comparing(Booking::getStart)).orElse(null);
-        Booking lastBooking = lastBookings.stream()
-                .max(Comparator.comparing(Booking::getStart)).orElse(null);
 
         return new ItemDtoByOwner(
                 item.getId(),

@@ -40,4 +40,7 @@ public interface BookingDao extends JpaRepository<Booking, Long> {
 
     List<Booking> findAllByBookerIdAndItemIdAndStatusEqualsAndEndIsBefore(Long userId, Long itemId, BookingStatus status, LocalDateTime time);
 
+    List<Booking> findAllByIdInAndEndBefore(List<Long> itemsId, LocalDateTime now);
+
+    List<Booking> findAllByItemIdAndEndBefore(long itemId, LocalDateTime now);
 }
