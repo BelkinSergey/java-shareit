@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
+import ru.practicum.shareit.group.Marker;
 
 @AllArgsConstructor
 @Getter
@@ -13,14 +13,12 @@ import lombok.Setter;
 public class ItemDto {
     private Long id;
 
-    @NotBlank(message = "Наименование вещи отсутствует.")
+    @NotBlank(message = "Наименование вещи отсутствует.", groups = {Marker.OnCreate.class})
     private String name;
 
-    @NotBlank(message = "Описание вещи пустое.")
+    @NotBlank(message = "Описание вещи пустое.", groups = {Marker.OnCreate.class})
     private String description;
 
-    @NotNull(message = "Доступность вещи не указана.")
+    @NotNull(message = "Доступность вещи не указана.", groups = {Marker.OnCreate.class})
     private Boolean available;
-
-    private Long requestId;
 }

@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
+import ru.practicum.shareit.group.Marker;
 
 @AllArgsConstructor
 @Getter
@@ -14,11 +14,12 @@ import lombok.Setter;
 public class UserDto {
     long id;
 
-    @NotBlank(message = "Имя пользователя не указано.")
+    @NotBlank(message = "Имя пользователя не указано.", groups = Marker.OnCreate.class)
     private String name;
 
-    @NotNull(message = "Почтовый адрес пустой.")
-    @Email(message = "Почтовый адрес не соответствует требованиям")
+    @NotNull(message = "Почтовый адрес пустой.", groups = Marker.OnCreate.class)
+    @Email(message = "Почтовый адрес не соответствует требованиям", groups = {Marker.OnCreate.class, Marker.OnUpdate.class})
     private String email;
 }
+
 
