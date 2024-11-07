@@ -20,10 +20,8 @@ public class BookingControllerTest {
 
     private static final String URL = "http://localhost:8080/bookings";
 
-
     @Autowired
-    ObjectMapper objectMapper;
-
+    private ObjectMapper objectMapper;
 
     @Test
     @DisplayName("Проверяем сериализацию Json")
