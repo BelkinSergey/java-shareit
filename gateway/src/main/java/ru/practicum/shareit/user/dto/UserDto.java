@@ -20,7 +20,7 @@ public class UserDto {
     private String name;
 
     @NotNull(message = "Почтовый адрес пустой.", groups = Marker.OnCreate.class)
-    @Email(message = "Почтовый адрес не соответствует требованиям")
+    @Email(message = "Почтовый адрес не соответствует требованиям", groups = {Marker.OnCreate.class, Marker.OnUpdate.class})
     private String email;
 }
 
