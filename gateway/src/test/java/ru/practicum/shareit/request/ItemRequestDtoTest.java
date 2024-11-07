@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,12 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(classes = ShareItApp.class)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ItemRequestDtoTest {
 
-    ObjectMapper objectMapper;
-
-    Validator validator;
+    private ObjectMapper objectMapper;
+    private Validator validator;
 
     @BeforeEach
     public void setUp() {

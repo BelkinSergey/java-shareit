@@ -1,8 +1,6 @@
 package ru.practicum.shareit.booking;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
 @ContextConfiguration(classes = ShareItApp.class)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class BookingControllerTest {
 
     private static final String URL = "http://localhost:8080/bookings";

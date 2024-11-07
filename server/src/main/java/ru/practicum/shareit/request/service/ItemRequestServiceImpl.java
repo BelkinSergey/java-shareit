@@ -46,6 +46,7 @@ public class ItemRequestServiceImpl implements ItemRequestService {
         return ItemRequestMapper.doItemRequestDto(savedRequest);
     }
 
+    @Transactional(readOnly = true)
     public List<ItemRequestDtoByOwner> findAllUsersRequestsWithReplies(Long userId) {
         checkUserAvailability(userDao, userId);
         List<ItemRequest> requests = requestDao.findAllByRequesterId(userId);
@@ -53,6 +54,7 @@ public class ItemRequestServiceImpl implements ItemRequestService {
         return findAndMap(requests);
     }
 
+    @Transactional(readOnly = true)
     public List<ItemRequestDtoByOwner> findAll(Long userId, int from, int size) {
         Sort sort = Sort.by(Sort.Direction.DESC, "created");
         PageRequest pageRequest = PageRequest.of(from / size, size, sort);
@@ -61,6 +63,7 @@ public class ItemRequestServiceImpl implements ItemRequestService {
         return findAndMap(requests);
     }
 
+    @Transactional(readOnly = true)
     public ItemRequestDtoByOwner findByIdWithReplies(Long userId, Long requestId) {
         checkUserAvailability(userDao, userId);
         ItemRequest request = requestDao.findById(requestId).orElseThrow(() -> new NotFoundException("Запрос не найден."));
@@ -73,6 +76,7 @@ public class ItemRequestServiceImpl implements ItemRequestService {
         return ItemRequestMapper.doItemRequestDtoByOwner(request, reply);
     }
 
+    @Transactional(readOnly = true)
     private List<ItemRequestDtoByOwner> findAndMap(List<ItemRequest> requests) {
         List<ItemDto> itemDtoList = new ArrayList<>();
         List<ItemRequestDtoByOwner> result = new ArrayList<>();

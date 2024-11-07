@@ -6,10 +6,8 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class UserDto {
-    long id;
-
+    private long id;
     private String name;
-
     private String email;
 }
 

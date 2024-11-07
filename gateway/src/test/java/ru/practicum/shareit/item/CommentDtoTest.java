@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,12 +14,10 @@ import ru.practicum.shareit.item.dto.CommentDto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
-@FieldDefaults(level = AccessLevel.PRIVATE)
 class CommentDtoTest {
 
-    ObjectMapper objectMapper;
-
-    Validator validator;
+    private ObjectMapper objectMapper;
+    private Validator validator;
 
     @BeforeEach
     void setUp() {
